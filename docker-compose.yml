@@ -1,0 +1,7 @@
+version: "3"
+services:
+  bind:
+    build: .
+    ports:
+      - "53:53/udp"
+      - 53:53
