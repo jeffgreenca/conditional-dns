@@ -9,7 +9,7 @@ pipeline {
       steps {
         sh 'docker build . -t bind'
       }
-    }
+    }    
     stage('Test') {
       steps {
         lock('port-1234') {
@@ -18,13 +18,13 @@ pipeline {
           sh 'docker stop $ID'
         }
       }
-    }
-    post {
-      always {
-        // In case the test fails
-        sh 'docker stop $ID'
-        // Clean up
-        sh 'docker rm $ID'
+      post {
+        always {
+          // In case the test fails
+          sh 'docker stop $ID'
+          // Clean up
+          sh 'docker rm $ID'
+        }
       }
     }
   }
