@@ -6,9 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('Check config') {
+    stage('Smoke') {
       steps {
-        sh 'named-checkconf'
+        sh 'uptime'
       }
     }
   }
